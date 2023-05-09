@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>게시글</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    번호:<p th:text="${obj.no}"></p>
+    제목:<p th:text="${obj.title}"></p>
+    내용:<p th:text="${obj.content}"></p>
+    작성자:<p th:text="${obj.writer}"></p>
+    조회수:<p th:text="${obj.hit}"></p>
+    날짜:<p th:text="${obj.regdate}"></p>
+
+    <hr>
+
+    <div style="display: inline-block">
+        <a th:href="@{/board/update.do(no=${obj.no})}"><button class="btn btn-warning">수정</button></a>
+        <form th:action="@{/board/delete.do}" method="post">
+            <input type="hidden" name="no" th:value="${obj.no}" />
+            <input type="submit" class="btn btn-danger" value="삭제" />
+        </form>
+    </div>
+    
+</body>
+</html>

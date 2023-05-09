@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>게시판 조회</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <h3>게시글목록</h3>
+    <a th:href="@{/board/insert.do}"><button class="btn btn-primary">작성하기</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>작성자</th>
+                <th>조회수</th>
+                <th>날짜</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="one : ${list}">
+                <th th:text="${one.no}"></th>
+                <td>
+                    <a th:href="@{/board/selectone.do(no=${one.no})}" th:text="${one.title}"></a>
+                </td>
+                <th th:text="${one.content}"></th>
+                <th th:text="${one.writer}"></th>
+                <th th:text="${one.hit}"></th>
+                <th th:text="${one.regdate}"></th>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

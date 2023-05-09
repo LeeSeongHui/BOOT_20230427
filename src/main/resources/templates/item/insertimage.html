@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>이미지등록</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <form th:action="@{/item/insertimage.do}" method="post" enctype="multipart/form-data">
+        외래키(물품번호) : <input type="text" name="itemno" th:value="${itemno}" readonly /><br/>
+        첨부할이미지 : <input type="file" name="file1" accept="image/*" /><br/> <!-- accept은 이미지 파일만 받도록 설정-->
+        <input type="submit" value="업로드" class="btn btn-success"/>
+    </form>
+    <a th:href="@{/item/selectlist.do}">물품목록으로</a>
+
+    <hr/>
+    <div th:each="tmp : ${imgno}" style="display: inline-block;">
+        <img th:src="@{/item/image(no=${tmp})}" style="width: 200px; height: 200px;"/>
+    </div>
+</body>
+</html>
