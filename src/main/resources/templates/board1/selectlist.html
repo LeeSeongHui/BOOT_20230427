@@ -38,6 +38,7 @@
                 <td th:text="${obj.writer}"></td>
                 <td th:text="${obj.hit}"></td>
                 <td th:text="${obj.regdate}"></td>
+                <td><a th:href="@{/boardimage1/selectlist.do(no=${obj.no})}"><button>이미지</button></a></td>
             </tr>
         </tbody>
     </table>
