@@ -33,5 +33,4 @@ public class HomeController {
     public String PageGET() {
         return "/error/403page";
     }
-    
 }
