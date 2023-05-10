@@ -14,6 +14,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @PropertySource(value = {"classpath:global.properties"}) // 직접만든 환경설정파일 위치 // classpath ==> resources와 동일함.
 @MapperScan(basePackages = {"com.example.mapper"}) // 매퍼 위치
 @ComponentScan(basePackages = {"com.example.controller", // 컨트롤러 위치
+								"com.example.controller.jpa", 
+								"com.example.controller.mybatis",
 								"com.example.service",  // 서비스 위치
 								"com.example.config",  // 시큐리티환경설정 위치
 								"com.example.restcontroller"}) // 레스트 컨트롤러 위치
