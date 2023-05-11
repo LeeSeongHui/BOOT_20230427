@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.entity.Member1;
+import com.example.entity.Member1Projection;
 import com.example.repository.Member1Repository;
 
 import lombok.RequiredArgsConstructor;
@@ -99,6 +100,28 @@ public class Member1Controller {
         catch (Exception e) {
             e.printStackTrace();
             return "redirect:/home/do";
+        }
+    }
+
+
+
+
+    @GetMapping(value = "/selectlistprojection.do")
+    public String selectListProjectionGET(Model model){
+        try {
+            List<Member1Projection> list = m1Repository.findAllByOrderByIdAsc();
+            
+            //log.info(format, list.toString());
+            // projection은 lombok toString사용 안됨.
+            for(Member1Projection obj : list) {
+                log.info(format, obj.getId() + "," + obj.getName() + "," + obj.getAge());
+            }
+            model.addAttribute("list", list);
+
+            return "/member1/selectlistprojection";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/home.do";
         }
     }
 

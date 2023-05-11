@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h3>식당목록</h3>
+    <a th:href="@{/restaurant1/insert.food}"><button>등록</button></a>
+    <hr />
+
+    <form th:action="@{/restaurant1/selectlist.food}" method="get" th:object="${search}">
+        <input type="hidden" name="page" value="1" />
+        <select th:field="${search.type}">
+            <option th:each="tmp, idx : ${search.typeCode}" th:value="${tmp}" th:text="${search.typeName[idx.index]}"></option>
+        </select>
+        <input type="text" th:field="${search.text}" placeholder="검색어" />
+        <input type="submit" value="검색">
+    </form>
+    <hr />
+    
+    <table border="1">
+        <tr th:each="obj : ${list}">
+            <td th:text="${obj.no}"></td>
+            <td th:text="${obj.phone}"></td>
+            <td th:text="${obj.name}"></td>
+            <td th:text="${obj.address}"></td>
+            <td th:text="${obj.type}"></td>
+            <td><a th:href="@{/menu1/insert.food(rno=${obj.no},rphone=${obj.phone})}"><button>메뉴등록</button></a></td>
+        </tr>
+    </table>
+
+    
+    <th:block th:each="num : ${#numbers.sequence(1, pages)}">
+        <a th:href="@{/restaurant1/selectlist.food(page=${num}, type=${search.type}, text=${search.text})}" th:text="${num}"></a>
+    </th:block>
+    
+</body>
+</html>
