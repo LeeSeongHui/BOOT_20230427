@@ -1,35 +1,22 @@
 package com.example.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 import lombok.ToString;
 
-@Getter
-@Setter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-
+@Data
 @Entity
 @Table(name = "MEMBER1") // 생성하고자하는 테이블, 또는 생성되어 있는 테이블 매칭
 public class Member1 {
@@ -55,5 +42,9 @@ public class Member1 {
     // @OneToMany(mappedBy = "member1", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     // @OrderBy(value = "no desc")
     // List<Address1> list = new ArrayList<>();
+
+    @ToString.Exclude
+    @OneToOne(mappedBy = "member1", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    private MemberInfo1 memberInfo1;
     
 }

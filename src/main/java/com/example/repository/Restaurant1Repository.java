@@ -7,9 +7,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.entity.Restaurant1;
+import com.example.entity.Restaurant1ID;
 
 @Repository
-public interface Restaurant1Repository extends JpaRepository<Restaurant1, String>{
+public interface Restaurant1Repository extends JpaRepository<Restaurant1, Restaurant1ID>{
     
     // select * from restaurant where phone like '%' || ? || '%' order by no desc
     List<Restaurant1> findByPhoneContainingOrderByNoDesc(String phone, Pageable pageable);

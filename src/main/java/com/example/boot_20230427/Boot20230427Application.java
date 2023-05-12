@@ -20,7 +20,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 								"com.example.config",  // 시큐리티환경설정 위치
 								"com.example.restcontroller"}) // 레스트 컨트롤러 위치
 
-@EntityScan(basePackages = {"com.example.entity"}) // 엔티티 위치
+@EntityScan(basePackages = {"com.example.entity", "com.example.entity.library"}) // 엔티티 위치
 @EnableJpaRepositories(basePackages = {"com.example.repository"}) // 저장소 위치
 public class Boot20230427Application {
 

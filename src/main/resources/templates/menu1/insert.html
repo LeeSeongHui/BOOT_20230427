@@ -16,18 +16,25 @@
     <h3>현재등록된 메뉴목록</h3>
     <table border="1">
         <tr>
+            <th>이미지</th>
             <th>메뉴번호</th>
             <th>메뉴명</th>
             <th>메뉴가격</th>
+            <th>버튼</th>
         </tr>
         <tr th:each="obj: ${list}">
+            <td><img th:src="@{/menu1/image(no=${obj.no})}" style="width:50px; height:50px" /></td>
             <td th:text="${obj.no}"></td>
             <td th:text="${obj.name}"></td>
             <td th:text="${obj.price}"></td>
+            <td>
+                <a th:href="@{/menu1/update.food(no=${obj.no}, rno=${rno}, rphone=${rphone})}"><button>수정</button></a>
+                <button th:onclick="deleteAction([[${obj.no}]])">삭제</button>
+            </td>
         </tr>
     </table>
     <hr />
-
+    
     <h3>메뉴등록</h3>
     <form th:action="@{/menu1/insert.food}" method="post" enctype="multipart/form-data">
         메뉴명 : <input type="text" name="name" /><br />
@@ -37,6 +44,21 @@
         이미지 : <input type="file" name="tmpFile"/><br />
         <input type="submit" value="메뉴등록" />
     </form>
+
+    <form th:action="@{/menu1/delete.food}" method="post" id="form2" style="display:none">
+        <input type="hidden" name="no" id="hidden_no" />
+        <input type="hidden" name="rno" th:value="${rno}" />
+        <input type="hidden" name="rphone" th:value="${rphone}" />
+    </form>
+
+    <script th:inline="javascript">
+        function deleteAction(no){
+            if(confirm('삭제할까요?')) {
+                document.getElementById('hidden_no').value = no;
+                document.getElementById('form2').submit();
+            }
+        }
+    </script>
     
 </body>
 </html>

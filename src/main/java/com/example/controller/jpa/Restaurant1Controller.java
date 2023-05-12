@@ -9,10 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.dto.Search;
 import com.example.entity.Restaurant1;
+import com.example.entity.Restaurant1ID;
 import com.example.repository.Restaurant1Repository;
 
 import lombok.RequiredArgsConstructor;
@@ -84,6 +84,20 @@ public class Restaurant1Controller {
         } catch (Exception e) {
             e.printStackTrace();
             return "redirect:/home/do";
+        }
+    }
+
+    @PostMapping(value = "/delete.food")
+    public String deletePOST(@ModelAttribute Restaurant1ID obj){
+        try {
+            log.info(format, obj.toString());
+            r1Repository.deleteById(obj);
+            return "redirect:/restaurant1/selectlist.food";
+
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/home.do";
         }
     }
 
