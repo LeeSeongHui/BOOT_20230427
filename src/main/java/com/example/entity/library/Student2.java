@@ -29,6 +29,8 @@ public class Student2 {
     private String name;
     
     private String phone;
+
+    private String password;
     
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss.SSS")
     @CreationTimestamp

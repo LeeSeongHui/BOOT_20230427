@@ -44,8 +44,6 @@ public class Library2 {
     @Column(name = "REGDATE", updatable = false)
     private Date regdate;
 
-    
-
     @ToString.Exclude
     @OneToMany(mappedBy = "libcode", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     private List<Admin2> admin2 = new ArrayList<>();

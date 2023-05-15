@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <!-- for (Library2 obj : list) {  } -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>코드</th>
+                <th>도서관</th>
+                <th>주소</th>
+                <th>전화번호</th>
+                <th>등록일자</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="obj : ${list}">
+                <td th:text="${obj.code}"></td> <!-- ${obj.getCode()} --> 
+                <td th:text="${obj.name}"></td>
+                <td th:text="${obj.address}"></td>
+                <td th:text="${obj.phone}"></td>
+                <td th:text="${obj.regdate}"></td>
+            </tr>
+        </tbody>
+        
+    </table>
+       
+
+</body>
+</html>
