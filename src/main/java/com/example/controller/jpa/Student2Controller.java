@@ -1,7 +1,10 @@
 package com.example.controller.jpa;
 
+import org.springframework.boot.autoconfigure.security.SecurityProperties.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,4 +49,30 @@ public class Student2Controller {
             return "redirect:/home.do";
         }
     }
+
+    // 127.0.0.1:9090/ROOT/student2/login.do
+    @GetMapping(value = "/login.do")
+    public String loginGET() {
+        try {
+            return "/student2/login";
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/home.do";
+        }
+    }
+
+    @GetMapping(value = "/home.do")
+    public String homeGET(@AuthenticationPrincipal User user, Model model) {
+        try {
+            model.addAttribute("user", user);
+            return "/student2/home";
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            return "redirect:/home.do";
+        }
+    }
+
+    
 }

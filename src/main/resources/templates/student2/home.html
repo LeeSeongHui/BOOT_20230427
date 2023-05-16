@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <!-- 태그 display => block, inline, inline-block -->
+    <!-- block => p div 태그 한칸 내려옴 -->
+    <!-- inline => label... 가로로 배치 width 속싱이 안됨.(크기설정x)-->
+    <!-- inline-block => 가로로 배치 width속성이 설정이 됨.-->
+
+    <h3>학생2 홈화면</h3>
+    <div th:if="${user != null}">
+        <p th:text="${user}" style="display: inline-block;"></p>
+        <p th:text="${user.username}"></p>
+    
+        <form th:action="@{/logout.do}" method="post">
+            <input type="submit" value="로그아웃" />
+        </form>
+    </div>
+</body>
+</html>
