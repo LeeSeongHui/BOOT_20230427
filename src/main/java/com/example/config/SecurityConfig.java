@@ -73,7 +73,7 @@ public class SecurityConfig {
             .anyRequest().permitAll();
 
         // 403페이지 설정(접근권한 불가 시 표시할 화면)    
-        http.exceptionHandling().accessDeniedPage("/403page.do");
+        http.exceptionHandling().accessDeniedPage("/error/403page.do");
 
         // 로그인 처리
         http.formLogin()
