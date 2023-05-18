@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <h3>chat</h3>
+
+    <div>
+        <input type="text" id="input" /> 
+        <button id="send" onclick="sendMessage()">send</button>
+        <div id="messages" style="border:1px solid #cccccc;" ></div>
+    </div>
+
+    <script>
+        
+
+        // 고유한 아이디 만들기
+        const id = `ds218_${new Date().getTime()}`;
+
+        // 접속하기 => 내가 전달한 아이디를 map에 변수에 보관(2분간) - RestSseController
+        const evnetSource = new EventSource(`/ROOT/api/sse/subscribe?id=${id}`);
+
+        console.log(EventSource);
+
+        // callback1(callback : 내가 직접 호출한것이 아니라 서버에서 호출시키는 것)
+        evnetSource.onopen = (e) => {
+            console.log(`onopen`, e);
+        };
+
+        // callback2
+        evnetSource.onmessage = (e) => {
+            const div = document.querySelector('#messages');
+            div.innerHTML = `${e.data}<br />` + div.innerHTML;
+            console.log(`onmessage`, e.data);
+        };
+
+        // callback3
+        evnetSource.onerror = (e) => {
+            console.log(`onerror`, e);
+        };
+
+        const sendMessage = () => {
+            const msg = document.querySelector('#input').value; // id가 input인것 찾음, .input이면 class가 input인것 찾음
+            fetch(`/ROOT/api/sse/publish?message=${msg}`);  // 메시지보내기
+        };  
+    </script>
+    
+</body>
+</html>
