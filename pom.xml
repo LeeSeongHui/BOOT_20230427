@@ -18,6 +18,12 @@
 	</properties>
 
 	<dependencies>
+		<!-- aop -->
+		<dependency>
+        	<groupId>org.springframework.boot</groupId>
+        	<artifactId>spring-boot-starter-aop</artifactId>
+      	</dependency>
+
 		 <!-- jjwt(JSON Web Token) -->
 		<dependency>
 	        <groupId>io.jsonwebtoken</groupId>
