@@ -4,6 +4,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
@@ -30,10 +32,17 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @EntityScan(basePackages = {"com.example.entity", "com.example.entity.library"}) // 엔티티 위치
 @EnableJpaRepositories(basePackages = {"com.example.repository"}) // 저장소 위치
-public class Boot20230427Application {
+public class Boot20230427Application extends SpringBootServletInitializer{
+
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Boot20230427Application.class);
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(Boot20230427Application.class, args);
 	}
+
+    
 
 }

@@ -17,6 +17,10 @@
 		<java.version>11</java.version>
 	</properties>
 
+	<!-- 개발용 jar -->
+	<!-- 서버 배포용 war -->
+	<packaging>war</packaging>
+
 	<dependencies>
 		<!-- aop -->
 		<dependency>

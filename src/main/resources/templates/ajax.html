@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <button th:onclick="init()">버튼누르면 함수호출</button>
+    <button th:onclick="init()">버튼누르면 함수호출</button>
+    <select th:onchange="init()"></select>
+
+    rest로 만든 controller은 반드시 script로만 자료를 처리할 수 있음.
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"></script>
+    <script th:inline="javascript">
+        async function init() { //함수는 자동으로 호출되지 않음.
+
+            // GET호출용
+            const url = /*[[@{/api/test1/select.do(aaa='a')}]]*/"";
+            const headers = {"Content-Type":"application/json"};
+            const { data } = await axios.get(url, { headers:headers });
+            console.log('반환되는 결과', data);
+
+            // // POST호출용
+            // const url = /*[[@{/api/test1/insert.do}]]*/"";
+            // const headers = {"Content-Type":"application/json"};
+            // const body = {id:"aaa", name:"bbb"};
+            // const { data } = await axios.post(url, body, { headers:headers });
+            // console.log('반환되는 결과', data);
+
+            // // PUT호출용
+            // const url = /*[[@{/api/test1/update.do}]]*/"";
+            // const body = {id:"aaa", name:"bbb"};
+            // const headers = {"Content-Type":"application/json"};
+            // const { data } = await axios.put(url, body, { headers:headers });
+            // console.log('반환되는 결과', data);
+
+            // // DELETE호출용
+            // const url = /*[[@{/api/test1/delete.do}]]*/"";
+            // const body = {id:"aaa", name:"bbb"};
+            // const headers = {"Content-Type":"application/json"};
+            // const { data } = await axios.delete(url, { headers:headers, data:body });
+            // console.log('반환되는 결과', data);
+        }
+
+        // init(); //수동으로 함수 호출함.
+    </script>
+</body>
+</html>
