@@ -35,9 +35,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class Boot20230427Application extends SpringBootServletInitializer{
 
 	@Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(Boot20230427Application.class);
-    }
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Boot20230427Application.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(Boot20230427Application.class, args);
