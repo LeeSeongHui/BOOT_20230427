@@ -87,6 +87,7 @@ public class Member1Controller {
     public String updatePOST(@ModelAttribute Member1 member1) {
         try {
             log.info(format, member1.toString());
+            
             // 기존 데이터를 읽음(아이디를 이용해서)
             Member1 member2 = m1Repository.findById(member1.getId()).orElse(member1);
 

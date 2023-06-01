@@ -8,6 +8,7 @@
 </head>
 <body>
     <h3>회원정보수정(member1)</h3>
+        
     <form th:action="@{/member1/update.do}" th:object="${member1}" method="post">
         아이디 : <input type="text" th:field="${member1.id}" readonly><br/>
         비밀번호 : <input type="text" th:field="${member1.pw}" ><br/>
