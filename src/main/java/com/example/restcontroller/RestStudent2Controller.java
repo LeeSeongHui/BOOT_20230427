@@ -82,7 +82,7 @@ public class RestStudent2Controller {
             //3. obj2를 다시 저장하기
             s2Repository.save(obj2);
             retMap.put("status",200);
-             }
+            }
         }catch(Exception e){
             e.printStackTrace();
             retMap.put("status",-1);

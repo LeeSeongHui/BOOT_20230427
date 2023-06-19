@@ -66,7 +66,7 @@ public class RestTestController {
     }
 
     // 삭제
-    // // @RequestBody 엔티티 obj
+    // @RequestBody 엔티티 obj
     @DeleteMapping(value="/delete.do")
     public Map<String,Object> get4(       ){
         Map<String, Object> retMap = new HashMap<>();
